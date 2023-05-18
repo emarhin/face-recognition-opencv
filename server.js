@@ -1,18 +1,24 @@
 var express = require("express");
 require("dotenv").config();
+const path = require("path");
 
 var app = express();
 
-// static files
-app.use("/css", express.static(__dirname + "public/css"));
-app.use("/js", express.static(__dirname + "public/js"));
-app.use("/img", express.static(__dirname + "public/images"));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-app.set("views", "./views");
-app.set("view engine", "ejs");
+const viewsDir = path.join(__dirname, "views");
+app.use(express.static(viewsDir));
+app.use(express.static(path.join(__dirname, "./public")));
+app.use(express.static(path.join(__dirname, "./public/css")));
+app.use(express.static(path.join(__dirname, "./public/js")));
+app.use(express.static(path.join(__dirname, "./public/images")));
+
+// app.set("views", "./views");
+// app.set("view engine", "ejs");
 
 app.get("/", (req, res) => {
-  console.log("my name is Emmanuel Arhin");
+  // console.log(cv);
   res.sendFile(__dirname + "/views/index.html");
 });
 
