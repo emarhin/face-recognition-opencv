@@ -13,6 +13,7 @@ app.use(express.static(path.join(__dirname, "./public")));
 app.use(express.static(path.join(__dirname, "./public/css")));
 app.use(express.static(path.join(__dirname, "./public/js")));
 app.use(express.static(path.join(__dirname, "./public/images")));
+app.use(express.static(path.join(__dirname, "./")));
 
 // app.set("views", "./views");
 // app.set("view engine", "ejs");
